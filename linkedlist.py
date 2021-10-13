@@ -15,7 +15,7 @@ class LinkedList:
 
     def prepend(self, value):
         newNode = Node(value)
-        if self.head is None:
+        if self.head is None: 
             self.head = newNode
             return
         newNode.next = self.head
