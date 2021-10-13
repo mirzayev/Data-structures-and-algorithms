@@ -38,7 +38,7 @@ class LinkedList:
             print('List is empty')
             return
 
-        # if self.search(needle) is None:  + O(n)
+        # if self.search(needle) is None:  + O(n) 
         #     print('Needle not found')
         #     return
 
