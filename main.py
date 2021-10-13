@@ -1,3 +1,6 @@
+print("Code is like humor. When you have to explain it, it’s bad.")
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -8,6 +11,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+        self.length = 0
 
     def prepend(self, value):
         newNode = Node(value)
@@ -21,6 +25,7 @@ class LinkedList:
         newNode = Node(value)
         if self.head is None:
             self.head = newNode
+            return
         current = self.head
         while (current.next):
             current = current.next
@@ -33,14 +38,14 @@ class LinkedList:
             print('List is empty')
             return
 
-        if self.search(needle) is None:
-            print('Needle not found')
-            return
+        # if self.search(needle) is None:  + O(n)
+        #     print('Needle not found')
+        #     return
 
-        if self.length() == 1:
-            newNode.next = self.head
-            self.head = newNode
-            return
+        # if self.length() == 1:           + O(n)
+        #     newNode.next = self.head
+        #     self.head = newNode
+        #     return
 
         current = self.head
         prev = current
@@ -60,13 +65,14 @@ class LinkedList:
             print('List is empty')
             return
 
-        if self.search(needle) is None:
-            print('Needle not found')
-            return
+        # if self.search(needle) is None: + O(n)
+        #     print('Needle not found')
+        #     return
 
-        if self.length() == 1:
-            self.head = None
-            return
+        # Handle this with length property of class
+        # if self.length() == 1:          + O(n) 
+        #     self.head = None
+        #     return
 
         current = self.head
         prev = current
@@ -126,11 +132,11 @@ link.prepend(15)
 # link.prepend(32)
 # link.prepend(43)
 
-link.delete(15)
+# link.delete(15)
 
 # print(link.length())
 
-# link.insertBefore(5, 314)
+link.insertBefore(5, 314)
 
 # link.prepend(8)
 
