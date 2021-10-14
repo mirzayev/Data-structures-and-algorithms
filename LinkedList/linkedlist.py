@@ -15,21 +15,25 @@ class LinkedList:
 
     def prepend(self, value):
         newNode = Node(value)
-        if self.head is None: 
+        if self.head is None:
             self.head = newNode
+            self.length += 1
             return
         newNode.next = self.head
         self.head = newNode
+        self.length += 1
 
     def append(self, value):
         newNode = Node(value)
         if self.head is None:
             self.head = newNode
+            self.length += 1
             return
         current = self.head
         while (current.next):
             current = current.next
         current.next = newNode
+        self.length += 1
 
     def insertBefore(self, needle, value):
         newNode = newNode = Node(value)
@@ -38,14 +42,14 @@ class LinkedList:
             print('List is empty')
             return
 
-        # if self.search(needle) is None:  + O(n) 
-        #     print('Needle not found')
-        #     return
+        if self.search(needle) is None:
+            print('Needle not found')
+            return
 
-        # if self.length() == 1:           + O(n)
-        #     newNode.next = self.head
-        #     self.head = newNode
-        #     return
+        if self.length == 1:
+            newNode.next = self.head
+            self.head = newNode
+            return
 
         current = self.head
         prev = current
@@ -53,6 +57,7 @@ class LinkedList:
             if current.value == needle:
                 prev.next = newNode
                 newNode.next = current
+                self.length += 1
                 return
 
             prev = current
@@ -63,26 +68,19 @@ class LinkedList:
     def delete(self, needle):
         if self.isEmpty():
             print('List is empty')
-            return
-
-        # if self.search(needle) is None: + O(n)
-        #     print('Needle not found')
-        #     return
-
-        # Handle this with length property of class
-        # if self.length() == 1:          + O(n) 
-        #     self.head = None
-        #     return
+            return   
 
         current = self.head
         prev = current
         while (current):
             if prev.value == needle:
                 self.head = current.next
+                self.length -= 1
                 return
 
             if current.value == needle:
                 prev.next = current.next
+                self.length -= 1
                 return
 
             prev = current
@@ -109,40 +107,3 @@ class LinkedList:
 
     def isEmpty(self):
         return self.head is None
-
-    def length(self):
-        current = self.head
-        count = 0
-        if self.isEmpty():
-            return 0
-
-        while (current):
-            count += 1
-            current = current.next
-
-        return count
-
-
-link = LinkedList()
-
-link.prepend(5)
-link.prepend(7)
-link.prepend(15)
-# link.prepend(12)
-# link.prepend(32)
-# link.prepend(43)
-
-# link.delete(15)
-
-# print(link.length())
-
-link.insertBefore(5, 314)
-
-# link.prepend(8)
-
-# link.prepend(33)
-
-# link.append(45)
-# link.append(88)
-
-link.traverse()
